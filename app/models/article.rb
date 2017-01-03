@@ -1,6 +1,8 @@
 class Article
   include Mongoid::Document
 
+  has_many :comments
+
   field :title,   type: String
   field :content, type: String
 
