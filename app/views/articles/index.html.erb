@@ -1,5 +1,4 @@
 <h1>Blog</h1>
-
 <ul>
   <% @articles.each do |ar| %>
     <li><%= link_to ar.title, article_path(ar.id) %></li>

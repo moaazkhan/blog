@@ -1,4 +1,24 @@
-<h1><%= @article.title %></h1>
+<h2><%= @article.title %></h2><br/>
 <div class="well">
   <%= @article.content %>
 </div>
+<br/>
+<br/>
+
+<h4>Comments</h4>
+<ol>
+  <% @comments.each do |c| %>
+    <li><%= c.content %></li>
+  <% end %>
+</ol><br/>
+
+<%= form_for(@new_comment, url: { action: :create_comment }, html: {class:'form-horizontal'})  do |f| %>
+  <fieldset>
+    <div class='form-group'>
+      <div class='col-md-4'>
+        <%= f.text_area :content, class: 'form-control', placeholder: 'Comment' %><br/>
+        <%= f.submit 'Add a new Comment', class: 'btn btn-primary btn-xs' %>
+      </div>
+    </div>
+  </fieldset>
+<% end %>
