@@ -1,7 +1,10 @@
 class Article
   include Mongoid::Document
   has_many    :comments
-  before_save :generate_slug_from_title
+  # before_save :generate_slug_from_title
+
+  #before validation is used so that before title is created else before_save won't give error.
+  before_validation :generate_slug_from_title
 
   field :title,   type: String
   field :content, type: String
@@ -10,6 +13,7 @@ class Article
 
   validates :title,   presence: true
   validates :content, presence: true #validate can be used to avoid blanks in content, comment etc.
+  validates :slug, uniqueness: true
 
   # automatically generates slug from title before saving/creating article
   def generate_slug_from_title
@@ -19,4 +23,5 @@ class Article
   def to_param
     self.slug
   end
+
 end
