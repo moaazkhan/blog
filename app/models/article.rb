@@ -12,8 +12,8 @@ class Article
   field :slug,    type: String
 
   validates :title,   presence: true
-  validates :content, presence: true #validate can be used to avoid blanks in content, comment etc.
-  validates :slug, uniqueness: true
+  validates :content, presence: true #validate presence can be used to avoid blanks in content, comment etc.
+  validates :slug, uniqueness: true  #validate uniqueness is used to avoid user entry for duplication.
 
   # automatically generates slug from title before saving/creating article
   def generate_slug_from_title
