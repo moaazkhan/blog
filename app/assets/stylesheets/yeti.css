@@ -7069,3 +7069,9 @@ input[type="checkbox"] {
 .modal .close {
   color: #222222;
 }
+
+/*User Addition*/
+#sign-nav #welcome {
+ vertical-align: middle;
+ text-align: center;
+}

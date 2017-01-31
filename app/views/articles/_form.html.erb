@@ -1,11 +1,5 @@
-<!-- <%= form_for(@article, url: { action: action }) do |f| %>
-  <h2>Title:</h2><%= f.text_field :title %>
-  <h2>Content:<%= f.text_area :content %><h2>
-  <%= f.submit submit_label %>
-<% end %> -->
 
 
-<!-- <form class="form-horizontal"> -->
 <div class='well'>
 <%= form_for(@article, url: { action: action }, html: {class:'form-horizontal'})  do |f| %>
   <fieldset>
