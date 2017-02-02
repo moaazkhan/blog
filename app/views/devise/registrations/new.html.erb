@@ -1,6 +1,7 @@
 <h2>Sign up!!!!</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, autofocus: true %>
@@ -8,8 +9,8 @@
 
   <div class="field">
     <!-- use "User Name" other wise pre loaded User name would be displayed i.e name first letter is small-->
-    <%= f.label :user_name, "User Name" %><br />
-    <%= f.text_field :user_name, autofocus: true %>
+    <%= f.label :username, "Username" %><br />
+    <%= f.text_field :username, autofocus: true %>
   </div>
 
   <div class="field">

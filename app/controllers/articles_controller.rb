@@ -42,6 +42,9 @@ class ArticlesController < ApplicationController
     # Assign the comment to our current article
     @comment.article_id = @article.id
 
+    #Assign the User who created the comment
+    @comment.user =  current_user
+
     # Finally save the comment
     @comment.save
 

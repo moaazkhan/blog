@@ -1,5 +1,6 @@
 class Article
   include Mongoid::Document
+  include Mongoid::Timestamps
   has_many    :comments
   # before_save :generate_slug_from_title
 

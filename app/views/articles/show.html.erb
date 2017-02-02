@@ -8,7 +8,11 @@
 <h4>Comments</h4>
 <ol>
   <% @comments.each do |c| %>
-    <li><%= c.content %></li>
+    <li>
+      <strong><%= c.user.username %>: </strong>
+      <%= c.content %>
+      (<%= time_ago_in_words(c.created_at) %> ago)
+    </li>
   <% end %>
 </ol><br/>
 
