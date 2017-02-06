@@ -2,6 +2,7 @@ class Article
   include Mongoid::Document
   include Mongoid::Timestamps
   has_many    :comments
+  belongs_to  :user
   # before_save :generate_slug_from_title
 
   #before validation is used so that before title is created else before_save won't give error.
@@ -11,8 +12,8 @@ class Article
   field :title,   type: String
   field :content, type: String
   #Initialize slug as string (Slug or parmalink is used instead of :id as route to give a proper name to the path)
-  field :slug,    type: String
-
+  field :slug,          type: String
+  # field :articleuser    type:String
   validates :title,     presence: true
   validates :content,   presence: true #validate presence can be used to avoid blanks in content, comment etc.
   validates :slug,      uniqueness: true  #validate uniqueness is used to avoid user entry for duplication.
@@ -26,8 +27,8 @@ class Article
     self.slug
   end
 
-  def user_name_uniq
-    self.user_name
-  end
+  # def user_name_uniq
+  #   self.user_name
+  # end
 
 end
