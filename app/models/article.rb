@@ -7,6 +7,11 @@ class Article
 
   #before validation is used so that before title is created else before_save won't give error.
   before_validation :generate_slug_from_title
+#
+#   class Holiday < ApplicationRecord
+#   validates :name, uniqueness: { scope: :year,
+#     message: "should happen once per year" }
+# end
 
 
   field :title,   type: String
@@ -16,7 +21,7 @@ class Article
   # field :articleuser    type:String
   validates :title,     presence: true
   validates :content,   presence: true #validate presence can be used to avoid blanks in content, comment etc.
-  validates :slug,      uniqueness: true  #validate uniqueness is used to avoid user entry for duplication.
+  validates :slug,      presence: true, uniqueness: {scope: :user} #validate uniqueness is used to avoid user entry for duplication.
 
   # automatically generates slug from title before saving/creating article
   def generate_slug_from_title
