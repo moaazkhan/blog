@@ -1,3 +1,4 @@
+<!--This View Just Displays Article Titles of the User Clicked previously-->
 <h1>Blogs</h1>
 <h4>Author Name: <%= @user.name %><h6>
 <ul>
@@ -5,6 +6,6 @@
     <li><%= link_to ar.title,article_path(@user.username,ar.slug) %></li>
   <% end %>
 </ul>
-<% if current_user.id == @user.id %>
-  <%= link_to 'New', "#{@user.username}/articles/new", class:"btn btn-primary" %>
+<% if current_user == @user %>
+  <%= link_to 'New', article_new_path, class:"btn btn-primary" %>
 <% end %>

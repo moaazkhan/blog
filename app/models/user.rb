@@ -3,6 +3,10 @@ class User
   include Mongoid::Timestamps
   has_many :comments
   has_many :articles
+
+  before_validation :normalize_username
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,7 +17,17 @@ class User
   field :username,           type: String, default: ""
   field :email,              type: String, default: ""
   field :encrypted_password, type: String, default: ""
-  validates :username,      uniqueness: true
+  validates :username,       uniqueness: true
+
+  def normalize_username
+    self.username = self.username.downcase.gsub(' ','-')
+  end
+
+  #to_param method is used to overwrite existing default value for path which is user id
+  def to_param
+    self.username
+  end
+
   ## Recoverable
   field :reset_password_token,   type: String
   field :reset_password_sent_at, type: Time
@@ -28,10 +42,7 @@ class User
   field :current_sign_in_ip, type: String
   field :last_sign_in_ip,    type: String
 
-  #to_param method is used to overwrite existing default value for path which is user id
-  def to_param
-    self.username
-  end
+
   ## Confirmable
   # field :confirmation_token,   type: String
   # field :confirmed_at,         type: Time

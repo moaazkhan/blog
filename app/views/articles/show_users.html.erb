@@ -1,6 +1,6 @@
-<h1>Author</h1>
+<h1>Users</h1>
 <ul>
   <% @users.each do |user| %>
-    <li><%= link_to user.username, username_path(user) %></li>
+    <li><%= link_to user.name, username_path(user) %></li>
   <% end %>
 </ul>

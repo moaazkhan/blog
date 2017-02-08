@@ -1,33 +1,31 @@
 class ArticlesController < ApplicationController
   # this applies user authentication on all pages except main index page and article show page
   # i.e any one can see the articles content but cant create
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:show_users, :show_user_articles,:show_article_content]
 
+  #This method shows just list of users
   def show_users
-    #Show list of users
     @users = User.all.to_a
   end
 
-  def article_index
-    # arti = Article.all.to_a
-    # @users = User.all.to_a
+  #This method shows just list of articles of the clicked user
+  def show_user_articles
     @user = User.find_by!(username: params[:username])
-    # @article= @user.articles.find_by(slug: params[:slug])
     @articles = @user.articles
   end
 
-  def show
+  #This method shows content and comments of the article clicked
+  def show_article_content
     # Used find by slug instead of id when article title is created a slug is generated automatically
     # @article = Article.find_by(slug: params[:slug])
     # #
     # @comments = @article.comments
     # @new_comment = Comment.new
 
-    @user= User.find_by!(username: params[:username])
+    @user = User.find_by!(username: params[:username])
     @article = @user.articles.find_by!(slug: params[:slug])
     @comments = @article.comments
     @new_comment = Comment.new
-
   end
 
   def new
@@ -66,7 +64,7 @@ class ArticlesController < ApplicationController
     @comment.save
 
     # Redirect to the current article page (/articles/current-id)
-    redirect_to action: :show
+    redirect_to action: :show_article_content
   end
 
   private
