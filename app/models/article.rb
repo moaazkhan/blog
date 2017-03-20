@@ -3,7 +3,8 @@ class Article
   include Mongoid::Timestamps
   has_many    :comments
   belongs_to  :user
-  # before_save :generate_slug_from_title
+
+  has_and_belongs_to_many :tags
 
   #before validation is used so that before title is created else before_save won't give error.
   before_validation :generate_slug_from_title
