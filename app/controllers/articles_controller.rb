@@ -26,11 +26,14 @@ class ArticlesController < ApplicationController
     @article = @user.articles.find_by!(slug: params[:slug])
     @comments = @article.comments
     @new_comment = Comment.new
+    @tags= Tag.all.to_a
+
   end
 
   def new
     @user = current_user
     @article = @user.articles.new
+    @tags= Tag.all.to_a
   end
 
   def create

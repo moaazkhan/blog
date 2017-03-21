@@ -1,6 +1,7 @@
 <h2><%= @article.title %></h2><br/>
 <div class="well">
   <%= @article.content %>
+  <br/>
 </div>
 <br/>
 <br/>
@@ -26,5 +27,3 @@
     </div>
   </fieldset>
 <% end %>
-
-<%= link_to 'New Tag', tags_new_path, class:"btn btn-primary btn-xs" %>
