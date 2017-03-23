@@ -25,10 +25,7 @@
 
     <div class='form-group'>
       <div class='col-lg-10 col-lg-offset-2'>
-        <% @tags.each do |tag| %>
-        <%= check_box_tag(tag.name) %>
-        <%= label_tag(tag.name, tag.name )%>
-        <% end %>
+        <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name  %>
       </div>
     </div>
 

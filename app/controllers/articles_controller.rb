@@ -26,8 +26,7 @@ class ArticlesController < ApplicationController
     @article = @user.articles.find_by!(slug: params[:slug])
     @comments = @article.comments
     @new_comment = Comment.new
-    @tags= Tag.all.to_a
-
+    @tags = @article.tags
   end
 
   def new
@@ -74,7 +73,7 @@ class ArticlesController < ApplicationController
 
   def article_params
     # the parameters for new article creation #strong params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :content,{tag_ids: []})
   end
 
   def comment_params

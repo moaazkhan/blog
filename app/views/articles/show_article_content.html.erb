@@ -1,11 +1,14 @@
-<h2><%= @article.title %></h2><br/>
+<h2><%= @article.title %></h2>
+
+<br/>
 <div class="well">
   <%= @article.content %>
-  <br/>
 </div>
+<% @tags.each do |tag| %>
+<%=link_to tag.name,tag_id_path,class: 'label label-default' %>
+<% end %>
 <br/>
 <br/>
-
 <h4>Comments</h4>
 <ol>
   <% @comments.each do |c| %>
