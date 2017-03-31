@@ -4,8 +4,9 @@
 <div class="well">
   <%= @article.content %>
 </div>
+
 <% @tags.each do |tag| %>
-<%=link_to tag.name,tag_id_path,class: 'label label-default' %>
+<%= link_to tag.name,tag_id_path(tag.slug),class: 'label label-default' %>
 <% end %>
 <br/>
 <br/>

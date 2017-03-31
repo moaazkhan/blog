@@ -6,7 +6,8 @@ Rails.application.routes.draw do
 
   get "/tags/new", to: "tag#new", as: "tags_new"
   post "/tags/new", to: "tag#create"
-  get "/tags/tagid", to:"tag#show", as: "tag_id"
+  get "/tags/:slug", to:"tag#show", as: "tag_id"
+
 
   get "/tags/:id/edit", to: "tag#edit", as: "tags_edit"
   patch "/tags/:id", to: "tag#update"

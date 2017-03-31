@@ -3,7 +3,7 @@
   <%= link_to 'Create New Tag', tags_new_path, class: "btn btn-primary btn-xs" %>
 
   <% @tags.each do |tag| %>
-      <li><%= tag.name %>
+      <li><%=link_to tag.name,tag_id_path(tag.slug) %>
       <%= link_to 'Edit', tags_edit_path(tag.id) %>
       <%= link_to "Delete", { action: :destroy, id: tag.id },
               method: :delete, data: { confirm: "Are you sure?" }%></li>

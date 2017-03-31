@@ -9,7 +9,8 @@ class TagController < ApplicationController
   end
 
   def show
-    
+    #To find the tag by slug
+    @tag = Tag.find_by!(slug: params[:slug])
   end
 
   def create

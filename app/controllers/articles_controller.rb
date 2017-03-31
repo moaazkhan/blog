@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     @article = @user.articles.find_by!(slug: params[:slug])
     @comments = @article.comments
     @new_comment = Comment.new
-    @tags = @article.tags
+    @tags = Tag.find(@article.tag_ids)
   end
 
   def new
